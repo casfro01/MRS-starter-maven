@@ -8,8 +8,8 @@ public class Movie {
 
     public Movie(int id, int year, String title) {
         this.id = id;
-        this.title = title;
-        this.year = year;
+        setTitle(title);
+        setYear(year);
     }
 
     public int getId() {

@@ -1,5 +1,8 @@
 package dk.easv.mrs.DAL;
+
+// project imports
 import dk.easv.mrs.BE.Movie;
+// java imports
 import java.util.ArrayList;
 import java.util.List;
 
