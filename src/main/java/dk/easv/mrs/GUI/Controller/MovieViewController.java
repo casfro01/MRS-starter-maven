@@ -73,6 +73,7 @@ public class MovieViewController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         CreateMovieViewController controller = Loader.getController();
         controller.setStage(stage);
+        controller.setMovieModel(movieModel);
         stage.show();
     }
 }

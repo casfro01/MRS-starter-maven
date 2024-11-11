@@ -21,6 +21,10 @@ public class MovieModel {
     }
 
 
+    public void addMovie(String title, int year) throws Exception
+    {
+        moviesToBeViewed.add(movieManager.addMovie(title, year));
+    }
 
     public ObservableList<Movie> getObservableMovies() {
         return moviesToBeViewed;

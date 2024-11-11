@@ -37,4 +37,8 @@ public class Movie {
     {
         return id + ": " + title + " ("+year+")";
     }
+
+    public String toData(){
+        return id + "," + year + "," + title;
+    }
 }

@@ -1,6 +1,7 @@
 package dk.easv.mrs.GUI.Controller;
 // project imports
 // java imports
+import dk.easv.mrs.GUI.Model.MovieModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -13,9 +14,14 @@ public class CreateMovieViewController {
     @FXML private Label errorlbl;
 
     private Stage stage;
+    private MovieModel movieModel;
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public void setMovieModel(MovieModel movieModel) {
+        this.movieModel = movieModel;
     }
 
     @FXML
@@ -24,6 +30,23 @@ public class CreateMovieViewController {
     }
 
     @FXML
-    private void createMovie(ActionEvent actionEvent) {
+    private void createMovie(ActionEvent actionEvent) throws Exception {
+        String title = titletxt.getText();
+        if (title.trim().isEmpty()) {
+            errorlbl.setText("Title is empty.");
+            return;
+        }
+        else if (yeartxt.getText().trim().isEmpty()) {
+            errorlbl.setText("Year is empty.");
+            return;
+        }
+        try{
+            int year = Integer.parseInt(yeartxt.getText());
+            movieModel.addMovie(title, year);
+            stage.close();
+        } catch (NumberFormatException e) {
+            errorlbl.setText("Year is not a number, you idiot!");
+            throw new RuntimeException(e);
+        }
     }
 }
