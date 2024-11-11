@@ -1,7 +1,8 @@
 package dk.easv.mrs.GUI.Controller;
+
 // project imports
-// java imports
 import dk.easv.mrs.GUI.Model.MovieModel;
+// java imports
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

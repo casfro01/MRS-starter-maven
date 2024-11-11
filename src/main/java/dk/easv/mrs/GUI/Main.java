@@ -1,4 +1,5 @@
 package dk.easv.mrs.GUI;
+
 // project imports
 // java imports
 import javafx.application.Application;
