@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="dk.easv.mrs.GUI.Controller.CreateMovieViewController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="310.0" prefWidth="252.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.mrs.GUI.Controller.CreateMovieViewController">
+   <children>
+      <TextField fx:id="titletxt" layoutX="26.0" layoutY="68.0" prefHeight="26.0" prefWidth="200.0" promptText="Title" />
+      <TextField fx:id="yeartxt" layoutX="26.0" layoutY="128.0" prefHeight="26.0" prefWidth="200.0" promptText="Year e.g: 1888" />
+      <Label layoutX="26.0" layoutY="38.0" prefHeight="26.0" prefWidth="200.0" text="Movie Title:" />
+      <Label layoutX="26.0" layoutY="98.0" prefHeight="26.0" prefWidth="200.0" text="Publication Year:" />
+      <Button layoutX="135.0" layoutY="198.0" mnemonicParsing="false" onAction="#cancleThing" prefHeight="26.0" prefWidth="90.0" text="Cancel" />
+      <Button layoutX="26.0" layoutY="198.0" mnemonicParsing="false" onAction="#createMovie" prefHeight="26.0" prefWidth="90.0" text="Create" />
+      <Label fx:id="errorlbl" layoutX="26.0" layoutY="247.0" prefHeight="26.0" prefWidth="200.0" textFill="RED" />
+   </children>
 </AnchorPane>

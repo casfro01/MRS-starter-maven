@@ -4,11 +4,19 @@ package dk.easv.mrs.GUI.Controller;
 import dk.easv.mrs.BE.Movie;
 import dk.easv.mrs.GUI.Model.MovieModel;
 // java imports
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -51,5 +59,20 @@ public class MovieViewController implements Initializable {
         alert.setTitle("Something went wrong");
         alert.setHeaderText(t.getMessage());
         alert.showAndWait();
+    }
+
+    @FXML
+    private void createNewMovie(ActionEvent actionEvent) throws IOException {
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("/views/CreateMovieView.fxml"));
+
+        Parent scene = Loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(scene));
+        stage.setTitle("Create Movie");
+
+        stage.initModality(Modality.APPLICATION_MODAL);
+        CreateMovieViewController controller = Loader.getController();
+        controller.setStage(stage);
+        stage.show();
     }
 }
