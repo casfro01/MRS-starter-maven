@@ -72,13 +72,12 @@ public class MovieViewController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(new Scene(scene));
         stage.setTitle("Create Movie");
-        
+
         stage.initModality(Modality.APPLICATION_MODAL);
         CreateMovieViewController controller = Loader.getController();
         controller.setStage(stage);
         controller.setMovieModel(movieModel);
         stage.show();
-
     }
 
     @FXML
@@ -90,6 +89,19 @@ public class MovieViewController implements Initializable {
     }
 
     @FXML
-    private void updateMovie(ActionEvent actionEvent) {
+    private void updateMovie(ActionEvent actionEvent) throws IOException {
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("/views/updateMovieView.fxml"));
+
+        Parent scene = Loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(scene));
+        stage.setTitle("Update Movie");
+
+        stage.initModality(Modality.APPLICATION_MODAL);
+        UpdateMovieViewController controller = Loader.getController();
+        controller.setStage(stage);
+        controller.setMovieModel(movieModel);
+        controller.setMovie(lstMovies.getSelectionModel().getSelectedItem());
+        stage.show();
     }
 }
