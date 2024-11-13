@@ -34,6 +34,11 @@ public class UpdateMovieViewController {
         movielbl.setText(m.toString());
     }
 
+    public void setTextFields(){
+        titletxt.setText(m.getTitle());
+        yeartxt.setText(m.getYear() + "");
+    }
+
     @FXML
     private void cancleThing(ActionEvent actionEvent) {
         stage.close();

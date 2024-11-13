@@ -102,6 +102,7 @@ public class MovieViewController implements Initializable {
         controller.setStage(stage);
         controller.setMovieModel(movieModel);
         controller.setMovie(lstMovies.getSelectionModel().getSelectedItem());
+        controller.setTextFields();
         stage.show();
     }
 }
