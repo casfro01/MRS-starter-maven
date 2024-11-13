@@ -77,7 +77,7 @@ public class MovieDAO_File implements IMovieDataAccess {
 
         // write to the temp file
         for (int i = 0; i < allLines.size(); i++) {
-            if (allLines.get(i).contains(movie.getId() + "")){
+            if (allLines.get(i).split(",")[0].trim().equals(movie.getId() + "")){
                 allLines.remove(i);
                 allLines.add(i, movie.toData());
                 //break;
