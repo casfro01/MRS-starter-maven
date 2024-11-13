@@ -47,6 +47,8 @@ public class MovieViewController implements Initializable {
 
         txtMovieSearch.textProperty().addListener((observableValue, oldValue, newValue) -> {
             try {
+                updatebtn.setVisible(false);
+                updatebtn.setDisable(true);
                 movieModel.searchMovie(newValue);
             } catch (Exception e) {
                 displayError(e);
@@ -82,6 +84,7 @@ public class MovieViewController implements Initializable {
 
     @FXML
     private void itemSelected(MouseEvent mouseEvent) {
+
         if (lstMovies.getSelectionModel().getSelectedItem() != null) {
             updatebtn.setVisible(true);
             updatebtn.setDisable(false);
