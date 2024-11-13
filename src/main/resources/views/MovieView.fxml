@@ -7,8 +7,9 @@
 
 <AnchorPane prefHeight="333.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.mrs.GUI.Controller.MovieViewController">
    <children>
-      <ListView fx:id="lstMovies" layoutY="54.0" prefHeight="156.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="54.0" />
+      <ListView fx:id="lstMovies" layoutY="54.0" onMouseClicked="#itemSelected" prefHeight="156.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="54.0" />
       <TextField fx:id="txtMovieSearch" layoutX="10.0" layoutY="14.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
       <Button layoutX="170.0" layoutY="10.0" mnemonicParsing="false" onAction="#createNewMovie" prefHeight="26.0" prefWidth="85.0" text="Create New" />
+      <Button fx:id="updatebtn" layoutX="256.0" layoutY="10.0" mnemonicParsing="false" onAction="#updateMovie" prefHeight="26.0" prefWidth="85.0" text="Update" visible="false" disable="true" />
    </children>
 </AnchorPane>

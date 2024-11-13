@@ -30,4 +30,8 @@ public class MovieManager {
     {
         return movieDAO.createMovie(title, year);
     }
+
+    public void updateMovie(Movie movie) throws Exception {
+        movieDAO.updateMovie(movie);
+    }
 }

@@ -26,6 +26,11 @@ public class MovieModel {
         moviesToBeViewed.add(movieManager.addMovie(title, year));
     }
 
+    public void changeMovie(Movie movie) throws Exception {
+        // update the file
+        movieManager.updateMovie(movie);
+    }
+
     public ObservableList<Movie> getObservableMovies() {
         return moviesToBeViewed;
     }

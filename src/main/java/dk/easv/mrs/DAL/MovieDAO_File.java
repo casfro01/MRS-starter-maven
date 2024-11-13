@@ -3,13 +3,18 @@ package dk.easv.mrs.DAL;
 import dk.easv.mrs.BE.Movie;
 // java imports
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import static java.nio.file.StandardOpenOption.*;
 
 public class MovieDAO_File implements IMovieDataAccess {
 
     private static final String MOVIES_FILE = "data/movie_titles.txt";
+    private static final Path fullPath = Path.of(MOVIES_FILE);
 
     //The @Override annotation is not required, but is recommended for readability
     // and to force the compiler to check and generate error msg. if needed etc.
@@ -64,6 +69,26 @@ public class MovieDAO_File implements IMovieDataAccess {
     // find it and update it
     @Override
     public void updateMovie(Movie movie) throws Exception {
+        // read lines
+        List<String> allLines = Files.readAllLines(fullPath);
+        // create temp file
+        Path tempPath = Path.of(MOVIES_FILE + "_TEMP");
+        Files.createFile(tempPath);
+
+        // write to the temp file
+        for (int i = 0; i < allLines.size(); i++) {
+            if (allLines.get(i).contains(movie.getId() + "")){
+                allLines.remove(i);
+                allLines.add(i, movie.toData());
+                //break;
+            }
+            Files.write(tempPath, allLines.get(i).getBytes(), APPEND);
+            // add the thing
+        }
+
+        // copy and delete temp file
+        Files.copy(tempPath, fullPath, StandardCopyOption.REPLACE_EXISTING);
+        Files.deleteIfExists(tempPath);
     }
 
     // delete the movie
