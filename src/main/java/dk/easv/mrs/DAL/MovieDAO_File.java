@@ -82,7 +82,7 @@ public class MovieDAO_File implements IMovieDataAccess {
                 allLines.add(i, movie.toData());
                 //break;
             }
-            Files.write(tempPath, allLines.get(i).getBytes(), APPEND);
+            Files.write(tempPath, (allLines.get(i) + "\n").getBytes(), APPEND);
             // add the thing
         }
 
