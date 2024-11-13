@@ -66,6 +66,10 @@ public class MovieViewController implements Initializable {
         alert.showAndWait();
     }
 
+    public void refresh(){
+        lstMovies.refresh();
+    }
+
     @FXML
     private void createNewMovie(ActionEvent actionEvent) throws IOException {
         FXMLLoader Loader = new FXMLLoader(getClass().getResource("/views/CreateMovieView.fxml"));
@@ -106,6 +110,7 @@ public class MovieViewController implements Initializable {
         controller.setMovieModel(movieModel);
         controller.setMovie(lstMovies.getSelectionModel().getSelectedItem());
         controller.setTextFields();
+        controller.setMovieController(this);
         stage.show();
     }
 }

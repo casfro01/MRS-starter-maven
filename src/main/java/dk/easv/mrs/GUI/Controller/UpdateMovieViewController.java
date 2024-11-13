@@ -20,9 +20,14 @@ public class UpdateMovieViewController {
     private Stage stage;
     private MovieModel movieModel;
     private Movie m;
+    private MovieViewController mc;
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public void setMovieController(MovieViewController mc) {
+        this.mc = mc;
     }
 
     public void setMovieModel(MovieModel movieModel) {
@@ -60,6 +65,7 @@ public class UpdateMovieViewController {
             m.setYear(year);
             m.setTitle(title);
             movieModel.changeMovie(m);
+            mc.refresh();
             stage.close();
         } catch (NumberFormatException e) {
             errorlbl.setText("Year is not a number, you idiot!");
