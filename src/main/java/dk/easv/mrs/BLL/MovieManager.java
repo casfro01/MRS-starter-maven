@@ -22,9 +22,15 @@ public class MovieManager {
     }
 
     public List<Movie> searchMovies(String query) throws Exception {
-        List<Movie> allMovies = getAllMovies();
-        List<Movie> searchResult = movieSearcher.search(allMovies, query);
-        return searchResult;
+
+        if (movieDAO.getClass() == MovieDAO_Db.class) {
+            return movieSearcher.search((MovieDAO_Db) movieDAO, query);
+        }
+        else{ // database search
+            List<Movie> allMovies = getAllMovies();
+            List<Movie> searchResult = movieSearcher.search(allMovies, query);
+            return searchResult;
+        }
     }
 
     public Movie addMovie(Movie newMovie) throws Exception

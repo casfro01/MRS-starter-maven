@@ -91,4 +91,28 @@ public class MovieDAO_Db implements IMovieDataAccess {
             throw new RuntimeException(e);
         }
     }
+
+    public List<Movie> getMovies(String query, String searchColumn) throws Exception {
+        List<Movie> result = new ArrayList<>();
+        String sql = "";
+        if (searchColumn.equals("Title")) {
+            sql = "SELECT * FROM Movie WHERE Title LIKE ?";
+        }
+        else if (searchColumn.equals("Year")) {
+            sql = "SELECT * FROM Movie WHERE Year LIKE ?";
+        }
+
+        DBConnector db = new DBConnector();
+        try(Connection conn = db.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, "%"+query+"%");
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()) {
+                Movie m = new Movie(rs.getInt("Id"), rs.getInt("Year"), rs.getString("Title"));
+                result.add(m);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return result;
+    }
 }
