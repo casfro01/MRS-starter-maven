@@ -45,7 +45,7 @@ public class MovieDAO_File implements IMovieDataAccess {
      * @throws Exception Can throw exception if there is file problems
      */
     @Override
-    public Movie createMovie(String title, int year) throws Exception {
+    public Movie createMovie(Movie newMovie) throws Exception {
         try{
             File movieFile = new File(MOVIES_FILE);
             Scanner in = new Scanner(movieFile);
@@ -56,7 +56,7 @@ public class MovieDAO_File implements IMovieDataAccess {
             in.close(); // close the scanner - important
             int id = Integer.parseInt(lastLine.split(",")[0]) + 1; // creates a new id based on the last element
             FileWriter fw = new FileWriter(MOVIES_FILE, true); // we want to append to the file and not overwrite
-            Movie m = new Movie(id, year, title); // new movie which needs to be appended
+            Movie m = new Movie(id, newMovie.getYear(), newMovie.getTitle()); // new movie which needs to be appended
             fw.append(m.toData()).append("\n"); // adds the string to the file
             fw.close(); // remember to close it
             return m;

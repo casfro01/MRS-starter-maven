@@ -1,10 +1,10 @@
-package dk.easv.mrs.DAL;
+package dk.easv.mrs.DAL.DB;
 // project imports
 import dk.easv.mrs.BE.Movie;
-
-import java.util.List;
+import dk.easv.mrs.DAL.IMovieDataAccess;
 
 // java imports
+import java.util.List;
 
 public class MovieDAO_Db implements IMovieDataAccess {
 
@@ -15,7 +15,7 @@ public class MovieDAO_Db implements IMovieDataAccess {
     }
 
     @Override
-    public Movie createMovie(String title, int year) throws Exception {
+    public Movie createMovie(Movie newMovie) throws Exception {
         return null;
     }
 

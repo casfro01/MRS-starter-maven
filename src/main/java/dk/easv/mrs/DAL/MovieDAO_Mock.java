@@ -3,6 +3,7 @@ package dk.easv.mrs.DAL;
 // project imports
 import dk.easv.mrs.BE.Movie;
 // java imports
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,13 +25,13 @@ public class MovieDAO_Mock implements IMovieDataAccess {
     }
 
     @Override
-    public Movie createMovie(String title, int year) throws Exception {
+    public Movie createMovie(Movie newMovie) throws Exception {
         return null;
     }
 
     @Override
     public void updateMovie(Movie movie) throws Exception {
-
+        throw new IOException();
     }
 
     @Override
