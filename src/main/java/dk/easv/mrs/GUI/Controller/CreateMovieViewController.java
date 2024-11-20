@@ -44,8 +44,13 @@ public class CreateMovieViewController {
         }
         try{
             int year = Integer.parseInt(yeartxt.getText());
-            movieModel.addMovie(new Movie(-1, year, title));
-            stage.close();
+            try{
+                movieModel.addMovie(new Movie(-1, year, title));
+                stage.close();
+            }
+            catch(Exception e){
+                errorlbl.setText(e.getMessage());
+            };
         } catch (NumberFormatException e) {
             errorlbl.setText("Year is not a number, you idiot!");
             throw new RuntimeException(e);

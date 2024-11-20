@@ -47,7 +47,7 @@ public class MovieDAO_Db implements IMovieDataAccess {
                 PreparedStatement search = conn.prepareStatement(sql);
                 search.setInt(1, newMovie.getYear());
                 search.setString(2, newMovie.getTitle());
-                ResultSet rs = preStmt.executeQuery(sql);
+                ResultSet rs = search.executeQuery();
                 rs.next(); // moves to first position
                 return new Movie(rs.getInt("Id"), newMovie.getYear(), newMovie.getTitle());
             } catch (Exception e) {
@@ -62,7 +62,7 @@ public class MovieDAO_Db implements IMovieDataAccess {
     @Override
     public void updateMovie(Movie movie) throws Exception {
         DBConnector db = new DBConnector();
-        String sql = "UPDATE Movie SET Year = ? SET Title = ? WHERE Id = ?";
+        String sql = "UPDATE Movie SET Year = ?, Title = ? WHERE Id = ?";
         try (Connection conn = db.getConnection(); PreparedStatement preStmt = conn.prepareStatement(sql)) {
             preStmt.setInt(1, movie.getYear());
             preStmt.setString(2, movie.getTitle());
