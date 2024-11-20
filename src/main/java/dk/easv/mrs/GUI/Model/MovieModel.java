@@ -21,9 +21,9 @@ public class MovieModel {
     }
 
 
-    public void addMovie(String title, int year) throws Exception
+    public void addMovie(Movie newMovie) throws Exception
     {
-        moviesToBeViewed.add(movieManager.addMovie(title, year));
+        moviesToBeViewed.add(movieManager.addMovie(newMovie));
     }
 
     public void changeMovie(Movie movie) throws Exception {

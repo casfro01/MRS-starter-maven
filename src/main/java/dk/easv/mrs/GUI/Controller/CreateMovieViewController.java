@@ -1,6 +1,7 @@
 package dk.easv.mrs.GUI.Controller;
 
 // project imports
+import dk.easv.mrs.BE.Movie;
 import dk.easv.mrs.GUI.Model.MovieModel;
 // java imports
 import javafx.event.ActionEvent;
@@ -43,7 +44,7 @@ public class CreateMovieViewController {
         }
         try{
             int year = Integer.parseInt(yeartxt.getText());
-            movieModel.addMovie(title, year);
+            movieModel.addMovie(new Movie(-1, year, title));
             stage.close();
         } catch (NumberFormatException e) {
             errorlbl.setText("Year is not a number, you idiot!");

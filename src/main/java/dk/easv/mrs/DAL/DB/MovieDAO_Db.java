@@ -61,6 +61,17 @@ public class MovieDAO_Db implements IMovieDataAccess {
 
     @Override
     public void updateMovie(Movie movie) throws Exception {
+        DBConnector db = new DBConnector();
+        String sql = "UPDATE Movie SET Year = ? SET Title = ? WHERE Id = ?";
+        try (Connection conn = db.getConnection(); PreparedStatement preStmt = conn.prepareStatement(sql)) {
+            preStmt.setInt(1, movie.getYear());
+            preStmt.setString(2, movie.getTitle());
+            preStmt.setInt(3, movie.getId());
+            preStmt.executeUpdate();
+        }
+        catch(Exception e){
+            throw new RuntimeException(e);
+        }
 
     }
 
