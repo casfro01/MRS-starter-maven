@@ -25,12 +25,10 @@ public class MovieViewController implements Initializable {
 
     @FXML private TextField txtMovieSearch;
     @FXML private ListView<Movie> lstMovies;
+    @FXML private Button updatebtn;
     private MovieModel movieModel;
-    @FXML
-    private Button updatebtn;
 
     public MovieViewController()  {
-
         try {
             movieModel = new MovieModel();
         } catch (Exception e) {
